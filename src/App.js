@@ -7,7 +7,7 @@ import Options from "./options";
 import Spinner from "./loading.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-
+// testtin
 require("dotenv").config();
 
 function App() {
