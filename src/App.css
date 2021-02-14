@@ -1,38 +1,139 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #42387b;
+  background: #f6f4f4;
+}
+
+nav {
+  font-weight: 600;
+  padding: 20px 5%;
+  width: 100vw;
+  height: 10vh;
+  color: #376764;
+}
+
+button {
+  cursor: pointer;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav button {
+  margin-right: 16px;
+  background: transparent;
+  border: none;
+}
+
+.home {
+  margin-right: auto;
+}
+
+.location-btn {
+  color: #376764;
+  width: 16px;
+  height: auto;
+  margin: 4px;
+}
+
+/* home page */
+.pages {
+  padding: 20px 5%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  margin-bottom: 48px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* form  */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 16px;
+}
+
+form input,
+form button,
+form select {
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 30px;
+  border: 2px solid #42387b;
+}
+
+form input,
+form select {
+  font-family: inherit;
+  color: #42387b;
+  background: transparent;
+}
+
+form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  background-image: url("sort-down.svg");
+  background-size: 12px 12px;
+  background-position: right 10px top 50%;
+  background-repeat: no-repeat;
+}
+
+form select option {
+  position: absolute;
+}
+
+form::selection {
+  background-color: green;
+}
+
+form button {
+  background: #42387b;
   color: white;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
-.App-link {
-  color: #61dafb;
+.city-name-container {
+  margin-top: 48px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.crime-data-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+.crime-cards {
+  padding: 24px;
+  margin: 8px;
+  box-shadow: 1px 1px 10px lightgray;
+  border-radius: 20px;
+}
+
+.crime-cards p {
+  font-size: 55px;
+}
+
+@media (min-width: 600px) {
+  .home-container {
+    margin: auto;
+    max-width: 500px;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+/* error handling */
+.error {
+  border-color: darkred;
 }
