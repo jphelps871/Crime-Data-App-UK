@@ -1,10 +1,14 @@
 import React from "react";
+import SignUp from "./SignUp";
+import Register from "./Register";
+import "./login.css";
 import "./App.css";
 
 function Login() {
   return (
     <div className="pages">
-      <h1>Login</h1>
+      <SignUp />
+      <Register />
     </div>
   );
 }
