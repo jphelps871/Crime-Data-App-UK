@@ -31,10 +31,10 @@ const Register = () => {
       },
       body: JSON.stringify(query),
     };
+    console.log(options);
     const response = await fetch("api/user/register", options);
-    const data = await response.json();
-    console.log(data);
-    // setSuccess(data)
+    const data = await response.text();
+    setSuccess(data);
   }
 
   // FUNCTIONS
@@ -53,7 +53,7 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={submitForm} className="sign-up" action="">
+    <form onSubmit={submitForm} className="register" action="">
       <h2>Register</h2>
       <label htmlFor="name">Name</label>
       <input name="name" type="text" onChange={userInputInformation} />

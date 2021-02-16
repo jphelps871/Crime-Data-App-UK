@@ -3,7 +3,6 @@ import "./App.css";
 import "./login.css";
 
 const SignIn = () => {
-  // STATES
   // stored user data
   const [registerDetails, setRegisterDetails] = useState({
     email: "",
@@ -11,7 +10,7 @@ const SignIn = () => {
   });
   // query user input
   const [query, setQuery] = useState({});
-  // errors
+
   const [success, setSuccess] = useState("");
 
   // CALL data
@@ -30,10 +29,10 @@ const SignIn = () => {
       },
       body: JSON.stringify(query),
     };
-    const response = await fetch("api/user/signIn", options);
-    const data = await response.json();
-    console.log(data);
-    // setSuccess(data)
+    console.log(options);
+    const response = await fetch("api/user/SignIn", options);
+    const data = await response.text();
+    setSuccess(data);
   }
 
   // FUNCTIONS
@@ -52,7 +51,7 @@ const SignIn = () => {
   };
 
   return (
-    <form className="register" onSubmit={submitForm}>
+    <form className="sign-up" onSubmit={submitForm}>
       <h2>Sign In</h2>
       <label htmlFor="email">Email</label>
       <input type="email" name="email" onChange={userInputInformation} />
