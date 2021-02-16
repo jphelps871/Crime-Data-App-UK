@@ -1,0 +1,31 @@
+.forms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0 3em;
+}
+
+.forms button {
+  margin-top: 33px;
+}
+
+.sign-up label,
+.register label {
+  font-weight: bold;
+  text-align: left;
+  text-indent: 15px;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.sign-up {
+  color: #376764;
+}
+
+.sign-up input {
+  border-color: #376764;
+}
+
+.sign-up button {
+  border-color: #376764;
+  background-color: #376764;
+}
