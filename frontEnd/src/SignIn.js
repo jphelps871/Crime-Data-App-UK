@@ -30,7 +30,7 @@ const SignIn = () => {
       },
       body: JSON.stringify(query),
     };
-    const response = await fetch("api/user/register", options);
+    const response = await fetch("api/user/signIn", options);
     const data = await response.json();
     console.log(data);
     // setSuccess(data)

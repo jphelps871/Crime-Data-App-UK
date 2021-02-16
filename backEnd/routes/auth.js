@@ -1,18 +1,51 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const { registerValidation, signInValidation } = require("../validation");
 const User = require("../model/User");
 
 router.post("/register", async (req, res) => {
+  // If validation fails, send and exit function
+  const { error } = registerValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  // Check email does not exist
+  const hasEmail = await User.findOne({ email: req.body.email });
+  if (hasEmail) return res.status(400).send("Email already exists");
+
+  // hash password
+  const password = req.body.password;
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   const user = new User({
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
+    password: hashedPassword,
   });
 
   user.save(async (err, doc) => {
     if (err) return res.status(400).send(err);
-    res.send(doc);
+    res.send("Thank you for registering!");
   });
+});
+
+router.post("/signIn", async (req, res) => {
+  const { error } = signInValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const userEmail = await User.findOne({ email: req.body.email });
+  if (!userEmail)
+    return res.status(400).send("Sorry, we could not find that email");
+
+  // unhash password
+  const matchedPassword = await bcrypt.compare(
+    req.body.password,
+    userEmail.password
+  );
+  if (!matchedPassword)
+    return res.status(400).send("Sorry, incorrect password");
+
+  res.send("Logged In");
 });
 
 module.exports = router;
