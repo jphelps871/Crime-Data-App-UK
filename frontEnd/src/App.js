@@ -25,6 +25,9 @@ function App() {
 }
 
 function Home() {
+  // LOGGED IN
+  const [loggedIn, setLoggedIn] = useState(false);
+
   // States
   const [userInputLocation, setInputLocation] = useState({
     street: "",
