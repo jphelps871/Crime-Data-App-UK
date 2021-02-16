@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const { registerValidation, signInValidation } = require("../validation");
 const User = require("../model/User");
 
@@ -45,7 +46,11 @@ router.post("/signIn", async (req, res) => {
   if (!matchedPassword)
     return res.status(400).send("Sorry, incorrect password");
 
-  res.send("Logged In");
+  const token = jwt.sign({ _id: userEmail._id }, process.env.TOKEN_JWT);
+  res.header("auth-token", token).send("Logged in!!");
+
+  // Store data in a cookie.
+  // see https://medium.com/@keikaavousi/nodejs-authentication-with-jwt-and-cookies-3fb1c8c739ba
 });
 
 module.exports = router;

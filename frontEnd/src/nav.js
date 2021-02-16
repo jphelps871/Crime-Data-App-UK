@@ -7,7 +7,10 @@ function Nav() {
   const navStyle = {
     textDecoration: "none",
     color: "inherit",
+    marginLeft: "24px",
   };
+
+  // when user clicks 'saved data' That is when you can check for the JWT token
 
   return (
     <nav>
@@ -18,6 +21,9 @@ function Nav() {
         <button>
           <FaLocationArrow className="location-btn" />
         </button>
+        <Link to="/savedData" style={navStyle}>
+          <li>Saved Data</li>
+        </Link>
         <Link to="/login" style={navStyle}>
           <li>Login</li>
         </Link>

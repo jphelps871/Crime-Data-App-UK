@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Nav from "./nav";
 import Login from "./login";
+import SavedData from "./savedData";
 import DisplayCrimeData from "./displayData";
 import CityName from "./cityName";
 import Options from "./options";
 import Spinner from "./loading.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-// testtin
+
 require("dotenv").config();
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/savedData" component={SavedData} />
           <Route path="/login" component={Login} />
         </Switch>
       </div>
