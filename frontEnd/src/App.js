@@ -25,9 +25,6 @@ function App() {
 }
 
 function Home() {
-  // const MAP_BOX_API =
-  //   "pk.eyJ1IjoiMnBoZWxqNTYiLCJhIjoiY2trc2NyaGExMGMxeDJ3cGw3NjBqNng1NyJ9.ZJp17pLpWHvxtYSVLxARNg";
-
   // States
   const [userInputLocation, setInputLocation] = useState({
     street: "",
