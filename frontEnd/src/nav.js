@@ -1,4 +1,4 @@
-import React, { useState, UseState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaLocationArrow } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./App.css";
@@ -9,8 +9,6 @@ function Nav() {
     color: "inherit",
     marginLeft: "24px",
   };
-
-  // when user clicks 'saved data' That is when you can check for the JWT token
 
   return (
     <nav>
