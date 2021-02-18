@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 import Nav from "./nav";
 import Login from "./login";
 import SavedData from "./savedData";
@@ -25,6 +28,8 @@ function App() {
     </Router>
   );
 }
+
+const element = <FontAwesomeIcon icon={faPlus} size="3x" />;
 
 function Home() {
   // States
@@ -154,7 +159,10 @@ function Home() {
           ‘data.police.uk’.
         </p>
       </div>
-      <CityName name={streetNameFromData} />
+      <div className="save">
+        <CityName name={streetNameFromData} />
+        <button className="save-crime">{element}</button>
+      </div>
       <div className="crime-data-container">
         {loading ? <Spinner /> : ""}
         {crimeData.map((data) => (

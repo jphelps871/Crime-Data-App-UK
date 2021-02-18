@@ -109,6 +109,18 @@ form button {
   font-weight: 700;
 }
 
+/* crime cards */
+.save {
+  display: flex;
+  justify-content: center;
+}
+
+.save-crime {
+  background-color: transparent;
+  padding: 8px;
+  border: none;
+}
+
 .city-name-container {
   margin-top: 48px;
 }

@@ -23,5 +23,6 @@ mongoose.connect(
 app.use(express.json());
 
 app.use("/api/user", authRouter);
+app.get;
 
 app.listen(port, () => console.log(`Listeneing it ${port}...`));
