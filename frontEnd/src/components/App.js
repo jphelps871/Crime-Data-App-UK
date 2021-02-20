@@ -5,12 +5,12 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Nav from "./nav";
 import Login from "./login";
 import SavedData from "./savedData";
-import DisplayCrimeData from "./displayData";
-import CityName from "./cityName";
-import Options from "./options";
-import Spinner from "./loading.js";
+import DisplayCrimeData from "./Home/displayData";
+import CityName from "./Home/cityName";
+import Options from "./Home/options";
+import Spinner from "./Home/loading.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
+import "../styles/App.css";
 
 require("dotenv").config();
 

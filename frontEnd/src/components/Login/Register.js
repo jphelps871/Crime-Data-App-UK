@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
-import "./login.css";
+import "../../styles/App.css";
+import "../../styles/login.css";
 
-const SignIn = () => {
+const Register = () => {
+  // STATES
   // stored user data
   const [registerDetails, setRegisterDetails] = useState({
+    name: "",
     email: "",
     password: "",
   });
   // query user input
   const [query, setQuery] = useState({});
-
+  // errors
   const [success, setSuccess] = useState("");
 
   // CALL data
@@ -30,7 +32,7 @@ const SignIn = () => {
       body: JSON.stringify(query),
     };
     console.log(options);
-    const response = await fetch("api/user/SignIn", options);
+    const response = await fetch("api/user/register", options);
     const data = await response.text();
     setSuccess(data);
   }
@@ -51,16 +53,18 @@ const SignIn = () => {
   };
 
   return (
-    <form className="sign-up" onSubmit={submitForm}>
-      <h2>Sign In</h2>
+    <form onSubmit={submitForm} className="register" action="">
+      <h2>Register</h2>
+      <label htmlFor="name">Name</label>
+      <input name="name" type="text" onChange={userInputInformation} />
       <label htmlFor="email">Email</label>
-      <input type="email" name="email" onChange={userInputInformation} />
+      <input name="email" type="email" onChange={userInputInformation} />
       <label htmlFor="password">Password</label>
-      <input type="password" name="password" onChange={userInputInformation} />
+      <input name="password" onChange={userInputInformation} />
       <p>{success}</p>
-      <button>Sign In</button>
+      <button>Register</button>
     </form>
   );
 };
 
-export default SignIn;
+export default Register;

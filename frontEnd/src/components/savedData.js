@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import "../styles/App.css";
 
 const SavedData = () => {
   const [loading, setLoading] = useState(true);
