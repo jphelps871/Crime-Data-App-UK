@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 import Nav from "./nav";
 import Login from "./login";
+import SavedData from "./savedData";
 import DisplayCrimeData from "./displayData";
 import CityName from "./cityName";
 import Options from "./options";
 import Spinner from "./loading.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-// testtin
+
 require("dotenv").config();
 
 function App() {
@@ -17,6 +21,7 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/savedData" component={SavedData} />
           <Route path="/login" component={Login} />
         </Switch>
       </div>
@@ -24,10 +29,9 @@ function App() {
   );
 }
 
-function Home() {
-  // LOGGED IN
-  const [loggedIn, setLoggedIn] = useState(false);
+const element = <FontAwesomeIcon icon={faPlus} size="3x" />;
 
+function Home() {
   // States
   const [userInputLocation, setInputLocation] = useState({
     street: "",
@@ -155,7 +159,10 @@ function Home() {
           ‘data.police.uk’.
         </p>
       </div>
-      <CityName name={streetNameFromData} />
+      <div className="save">
+        <CityName name={streetNameFromData} />
+        <button className="save-crime">{element}</button>
+      </div>
       <div className="crime-data-container">
         {loading ? <Spinner /> : ""}
         {crimeData.map((data) => (
