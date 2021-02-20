@@ -2,7 +2,6 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser");
 const { registerValidation, signInValidation } = require("../validation");
 const User = require("../model/User");
 
