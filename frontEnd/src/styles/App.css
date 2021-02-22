@@ -88,7 +88,7 @@ form select {
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
-  background-image: url("sort-down.svg");
+  background-image: url("../img/sort-down.svg");
   background-size: 12px 12px;
   background-position: right 10px top 50%;
   background-repeat: no-repeat;

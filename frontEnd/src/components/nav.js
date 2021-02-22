@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaLocationArrow } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "./App.css";
+import "../styles/App.css";
 
 function Nav() {
   const navStyle = {

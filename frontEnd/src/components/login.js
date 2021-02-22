@@ -1,8 +1,8 @@
 import React from "react";
-import SignIn from "./SignIn";
-import Register from "./Register";
-import "./login.css";
-import "./App.css";
+import SignIn from "./Login/SignIn";
+import Register from "./Login/Register";
+import "../styles/login.css";
+import "../styles/App.css";
 
 function Login() {
   return (
