@@ -55,4 +55,15 @@ const getAllData = async ({
   }
 };
 
-export { getAllData };
+const checkUserLoggedIn = async () => {
+  try {
+    const response = await fetch("/api/user/checkToken");
+    const data = await response.text();
+    return data;
+  } catch (err) {
+    console.log(err);
+    return new Error("need to be logged in");
+  }
+};
+
+export { getAllData, checkUserLoggedIn };
