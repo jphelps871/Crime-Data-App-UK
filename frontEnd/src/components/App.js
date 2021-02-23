@@ -9,6 +9,7 @@ import DisplayCrimeData from "./Home/displayData";
 import CityName from "./Home/cityName";
 import Options from "./Home/options";
 import Spinner from "./Home/loading.js";
+import SendData from "./Home/sendData";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { getAllData } from "../Requests";
@@ -46,7 +47,6 @@ function Home() {
   const [crimeData, setCrimeData] = useState([]);
   const [streetNameFromData, setStreetNameFromData] = useState("");
   const [loading, setLoading] = useState(false);
-
   useEffect(() => {
     getAllData({
       sendUserInputLocation,
@@ -119,6 +119,7 @@ function Home() {
         <CityName name={streetNameFromData} />
       </div>
       <div className="crime-data-container">
+        <SendData dataToDatabase={crimeData} />
         {loading ? <Spinner /> : ""}
         {crimeData.map((data) => (
           <DisplayCrimeData
@@ -133,6 +134,3 @@ function Home() {
 }
 
 export default App;
-
-// authors
-// <div>Icons made by <a href="http://fontawesome.io" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

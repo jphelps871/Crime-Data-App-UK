@@ -8,7 +8,6 @@ const getAllData = async ({
 }) => {
   // Stop getAllData from running if nothing is in the search input
   if (sendUserInputLocation.location === "") return;
-  console.log(sendUserInputLocation.location);
 
   try {
     // fetch location from user input
@@ -51,19 +50,8 @@ const getAllData = async ({
     setStreetNameFromData("Sorry, there is no information on this location");
 
     // return crimeData to nothing
-    setCrimeData([]);
+    // setCrimeData([]);
   }
 };
 
-const checkUserLoggedIn = async () => {
-  try {
-    const response = await fetch("/api/user/checkToken");
-    const data = await response.text();
-    return data;
-  } catch (err) {
-    console.log(err);
-    return new Error("need to be logged in");
-  }
-};
-
-export { getAllData, checkUserLoggedIn };
+export { getAllData };

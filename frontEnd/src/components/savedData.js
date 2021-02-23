@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { checkUserLoggedIn } from "../../src/Requests";
+import { CheckUserLoggedIn } from "../../src/Requests";
 import "../styles/App.css";
 
 const SavedData = () => {
   const [loading, setLoading] = useState(true);
-  // const [loggedIn, setLoggedIn] = useState(false);
   const [response, setResponse] = useState("");
 
-  useEffect(() => {
-    checkUserLoggedIn().then(
-      (res) => {
-        setResponse(res);
-      },
-      (err) => setResponse(err)
-    );
+  useEffect(async () => {
+    const response = await fetch("/api/user/checkToken");
+    if (response.status !== 401) {
+      const data = await response.text();
+      setResponse(data);
+    } else {
+      setResponse("You need to sign in");
+    }
     setLoading(false);
   }, []);
 
