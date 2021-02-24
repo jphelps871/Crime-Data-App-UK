@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 
 const SendData = ({ dataToDatabase }) => {
   const [loggedIn, setLoggedIn] = useState(false);
+  let test = dataToDatabase;
   let displays;
 
-  const sendData = (dataToDatabase) => {
-    // send to database
-    if (dataToDatabase.length !== 0) {
-      // send to database
-    }
+  const sendData = () => {
+    console.log(test);
   };
 
   useEffect(async () => {
