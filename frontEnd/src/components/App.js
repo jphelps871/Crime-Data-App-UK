@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import Nav from "./nav";
-import Login from "./login";
-import SavedData from "./savedData";
 import DisplayCrimeData from "./Home/displayData";
 import CityName from "./Home/cityName";
 import Options from "./Home/options";
 import Spinner from "./Home/loading.js";
-import SendData from "./Home/sendData";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { getAllData } from "../Requests";
@@ -25,8 +20,6 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/savedData" component={SavedData} />
-          <Route path="/login" component={Login} />
         </Switch>
       </div>
     </Router>
@@ -47,6 +40,7 @@ function Home() {
   const [crimeData, setCrimeData] = useState([]);
   const [streetNameFromData, setStreetNameFromData] = useState("");
   const [loading, setLoading] = useState(false);
+  
   useEffect(() => {
     getAllData({
       sendUserInputLocation,
@@ -78,9 +72,6 @@ function Home() {
         year: userDefinedYear,
       });
 
-      // reset input
-      // userStreetInput.value = "";
-      // userCityInput.value = "";
       userStreetInput.style.borderColor = "inherit";
       userCityInput.style.borderColor = "inherit";
     } else {
@@ -119,7 +110,6 @@ function Home() {
         <CityName name={streetNameFromData} />
       </div>
       <div className="crime-data-container">
-        <SendData dataToDatabase={crimeData} />
         {loading ? <Spinner /> : ""}
         {crimeData.map((data) => (
           <DisplayCrimeData

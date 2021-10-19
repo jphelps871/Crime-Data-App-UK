@@ -19,12 +19,6 @@ function Nav() {
         <button>
           <FaLocationArrow className="location-btn" />
         </button>
-        <Link to="/savedData" style={navStyle}>
-          <li>Saved Data</li>
-        </Link>
-        <Link to="/login" style={navStyle}>
-          <li>Login</li>
-        </Link>
       </ul>
     </nav>
   );
