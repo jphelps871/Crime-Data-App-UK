@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Nav from "./nav";
+import Nav from "./Nav";
 import DisplayCrimeData from "./Home/displayData";
 import CityName from "./Home/cityName";
 import Options from "./Home/options";
