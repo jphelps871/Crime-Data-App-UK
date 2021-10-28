@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import Nav from "./nav";
-import Login from "./login";
-import SavedData from "./savedData";
+import Nav from "./Nav";
 import DisplayCrimeData from "./Home/displayData";
 import CityName from "./Home/cityName";
 import Options from "./Home/options";
@@ -24,15 +20,11 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/savedData" component={SavedData} />
-          <Route path="/login" component={Login} />
         </Switch>
       </div>
     </Router>
   );
 }
-
-const element = <FontAwesomeIcon icon={faPlus} size="3x" />;
 
 function Home() {
   // States
@@ -48,7 +40,7 @@ function Home() {
   const [crimeData, setCrimeData] = useState([]);
   const [streetNameFromData, setStreetNameFromData] = useState("");
   const [loading, setLoading] = useState(false);
-
+  
   useEffect(() => {
     getAllData({
       sendUserInputLocation,
@@ -57,56 +49,6 @@ function Home() {
       setCrimeData,
     });
   }, [sendUserInputLocation]);
-
-  // const getAllData = async () => {
-  //   // Stop getAllData from running if nothing is in the search input
-  //   if (sendUserInputLocation.location === "") return;
-  //   console.log(sendUserInputLocation.location);
-
-  //   try {
-  //     // fetch location from user input
-  //     const locationResponse = await fetch(
-  //       `https://api.mapbox.com/geocoding/v5/mapbox.places/${sendUserInputLocation.location}.json?limit=1&country=GB&access_token=${process.env.REACT_APP_MAP_BOX_API}`
-  //     );
-  //     const locationData = await locationResponse.json();
-  //     const location = locationData.features[0].center;
-
-  //     // fetch crime data, from latitude and longitude of MapBox API
-  //     const allCrimeData = [];
-  //     for (let i = 1; i < 12; i++) {
-  //       const crimeResponse = await fetch(
-  //         `https://data.police.uk/api/crimes-at-location?date=${sendUserInputLocation.year}-${i}&lat=${location[1]}&lng=${location[0]}`
-  //       );
-  //       // get crime data
-  //       const crimeData = await crimeResponse.json();
-  //       crimeData.forEach((obj) => {
-  //         allCrimeData.push(obj);
-  //       });
-  //       setLoading(true);
-  //     }
-
-  //     setStreetNameFromData(allCrimeData[0].location.street.name);
-
-  //     // reduce json into objects and their quantities (how many times they appear)
-  //     const crimeQuantity = allCrimeData.reduce((allCrimes, crime) => {
-  //       if (crime.category in allCrimes) {
-  //         allCrimes[crime.category]++;
-  //       } else {
-  //         allCrimes[crime.category] = 1;
-  //       }
-  //       return allCrimes;
-  //     }, {});
-
-  //     // return an array from object
-  //     setCrimeData(Object.entries(crimeQuantity));
-  //     setLoading(false);
-  //   } catch (e) {
-  //     setStreetNameFromData("Sorry, there is no information on this location");
-
-  //     // return crimeData to nothing
-  //     setCrimeData([]);
-  //   }
-  // };
 
   function streetAndCityInput(e) {
     // send data to string state
@@ -130,9 +72,6 @@ function Home() {
         year: userDefinedYear,
       });
 
-      // reset input
-      // userStreetInput.value = "";
-      // userCityInput.value = "";
       userStreetInput.style.borderColor = "inherit";
       userCityInput.style.borderColor = "inherit";
     } else {
@@ -169,7 +108,6 @@ function Home() {
       </div>
       <div className="save">
         <CityName name={streetNameFromData} />
-        <button className="save-crime">{element}</button>
       </div>
       <div className="crime-data-container">
         {loading ? <Spinner /> : ""}
@@ -186,6 +124,3 @@ function Home() {
 }
 
 export default App;
-
-// authors
-// <div>Icons made by <a href="http://fontawesome.io" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

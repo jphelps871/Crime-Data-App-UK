@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-
 const getAllData = async ({
   sendUserInputLocation,
   setLoading,
@@ -8,7 +6,8 @@ const getAllData = async ({
 }) => {
   // Stop getAllData from running if nothing is in the search input
   if (sendUserInputLocation.location === "") return;
-  console.log(sendUserInputLocation.location);
+
+  setLoading(true);
 
   try {
     // fetch location from user input
@@ -29,7 +28,6 @@ const getAllData = async ({
       crimeData.forEach((obj) => {
         allCrimeData.push(obj);
       });
-      setLoading(true);
     }
 
     setStreetNameFromData(allCrimeData[0].location.street.name);
@@ -51,7 +49,7 @@ const getAllData = async ({
     setStreetNameFromData("Sorry, there is no information on this location");
 
     // return crimeData to nothing
-    setCrimeData([]);
+    // setCrimeData([]);
   }
 };
 
